@@ -6,3 +6,7 @@
 - Compile and Load the File `ArduinoCode.ino` on your Arduino
 - Run `npm start`
 - The Server is Running on [http://localhost:8080](http://localhost:8080)
+
+## Breadboard:
+![](https://sharkbyteprojects.github.io/Arduino-Web-Service-Example/hardware/Breadboard.png)
+![](https://sharkbyteprojects.github.io/Arduino-Web-Service-Example/hardware/plan.png)
