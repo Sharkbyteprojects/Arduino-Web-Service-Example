@@ -1,5 +1,8 @@
 # INOS
 [![Gitter](https://badges.gitter.im/Sharkbyteprojects/AWEBService.svg)](https://gitter.im/Sharkbyteprojects/AWEBService?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+If you fixed a Bug or make this Better, Fork this, then use pull request to add your version to this Project.
+
 [MORE HELP](https://github.com/Sharkbyteprojects/Arduino-Web-Service-Example/wiki)
 ## First Steps:
 - Build the Parts Together
