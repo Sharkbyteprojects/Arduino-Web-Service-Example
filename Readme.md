@@ -1,5 +1,6 @@
 # INOS
 [![Gitter](https://badges.gitter.im/Sharkbyteprojects/AWEBService.svg)](https://gitter.im/Sharkbyteprojects/AWEBService?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[MORE HELP](https://github.com/Sharkbyteprojects/Arduino-Web-Service-Example/wiki)
 ## First Steps:
 - Build the Parts Together
 - Connect Arduino with Computer
