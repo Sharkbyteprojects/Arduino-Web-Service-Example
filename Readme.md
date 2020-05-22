@@ -1,4 +1,7 @@
 # INOS
+
+[![Join the chat at https://gitter.im/Sharkbyteprojects/AWEBService](https://badges.gitter.im/Sharkbyteprojects/AWEBService.svg)](https://gitter.im/Sharkbyteprojects/AWEBService?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## First Steps:
 - Build the Parts Together
 - Connect Arduino with Computer
