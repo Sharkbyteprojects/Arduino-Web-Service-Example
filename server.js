@@ -2,7 +2,10 @@ const cylon = require("cylon");
 const app = require("express")();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const port = "COM4";
+const port = JSON.parse(
+  require("fs").readFileSync(__dirname + "/arduino.port.json")
+).port;
+console.log("Loaded Port " + port);
 cylon
   .robot()
   .connection("arduino", { adaptor: "firmata", port: port })

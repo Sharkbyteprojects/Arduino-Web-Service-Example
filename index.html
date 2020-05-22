@@ -44,18 +44,18 @@
         function reacOpto(data) {
           var text = "Optokoppler";
           var states = "Optokoppler is Current ";
-          var style="";
+          var style = "";
           if (data.state) {
             text += " Off";
             states += "On";
-            style+="background-color:green;";
+            style += "background-color:green;";
           } else {
             text += " On";
             states += "Off";
-            style+="background-color:red;";
+            style += "background-color:red;";
           }
           $("button.buttonopto").text(text);
-          $("button.buttonopto").attr("style",style);
+          $("button.buttonopto").attr("style", style);
           $("div.buttonopto").text(states);
         }
         $.get("/api/opto/ison", reacOpto, "json");
@@ -68,12 +68,17 @@
   </head>
   <body>
     <h1>Arduino Web Control</h1>
-    <hr><h2>Servo</h2>
+    <hr />
+    <h2>Servo</h2>
     <input type="number" class="servo" />
     <button class="servo">Servo Rotate</button>
-    <div class="servo"></div><hr><h2>Optokoppler</h2>
+    <div class="servo"></div>
+    <hr />
+    <h2>Optokoppler</h2>
     <button class="buttonopto">Optokoppler</button>
-    <div class="buttonopto"></div><hr><h2>Button State:</h2>
+    <div class="buttonopto"></div>
+    <hr />
+    <h2>Button State:</h2>
     <svg
       xmlns:dc="http://purl.org/dc/elements/1.1/"
       xmlns:cc="http://creativecommons.org/ns#"
