@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ROBOT CONTROL</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
+    <script type="text/javascript">
+      $(document).ready(() => {
+        var pressed = "rect14";
+        var stylesss = `fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.99999994`;
+        var socket = io();
+        function pma(msg) {
+          if (msg.pressed) {
+            document.getElementById(pressed).style = "display:none;" + stylesss;
+          } else {
+            document.getElementById(pressed).style =
+              "display:block;" + stylesss;
+          }
+        }
+        socket.on("buttonpress", (msg) => {
+          pma(msg);
+        });
+        $.get("/api/isPressed", pma, "json");
+        $("button.servo").click(() => {
+          var rov = JSON.parse('{"number":' + $("input.servo").val() + "}")
+            .number;
+          $("input.servo").val(rov * -1);
+          if (rov <= 90 && rov >= -90) {
+            $.get(
+              "/api/rotate",
+              { time: $.now(), rotate: rov },
+              (data) => {
+                $("div.servo").text(`Rotation: ${data.newAngle} degrees`);
+              },
+              "json"
+            );
+          } else {
+            alert("ERROR, GIVE A NUMBER BETWEEN -90 AND 90");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="number" class="servo" />
+    <button class="servo">Servo Rotate</button>
+    <div class="servo"></div>
+    <svg
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+      xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+      width="100"
+      height="100"
+      viewBox="0 0 26.458333 26.458333"
+      version="1.1"
+      id="svg8"
+      inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+      sodipodi:docname="BTN.svg"
+    >
+      <title id="title10">button</title>
+      <defs id="defs2" />
+      <sodipodi:namedview
+        id="base"
+        pagecolor="#ffffff"
+        bordercolor="#666666"
+        borderopacity="1.0"
+        inkscape:pageopacity="0.0"
+        inkscape:pageshadow="2"
+        inkscape:zoom="1.4"
+        inkscape:cx="293.92857"
+        inkscape:cy="52.857143"
+        inkscape:document-units="mm"
+        inkscape:current-layer="layer1"
+        showgrid="false"
+        units="px"
+        width="100px"
+        inkscape:window-width="1366"
+        inkscape:window-height="705"
+        inkscape:window-x="-8"
+        inkscape:window-y="-8"
+        inkscape:window-maximized="1"
+      />
+      <metadata id="metadata5">
+        <rdf:RDF>
+          <cc:Work rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+            <dc:title>button</dc:title>
+            <cc:license
+              rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"
+            />
+          </cc:Work>
+          <cc:License
+            rdf:about="http://creativecommons.org/licenses/by-sa/4.0/"
+          >
+            <cc:permits
+              rdf:resource="http://creativecommons.org/ns#Reproduction"
+            />
+            <cc:permits
+              rdf:resource="http://creativecommons.org/ns#Distribution"
+            />
+            <cc:requires rdf:resource="http://creativecommons.org/ns#Notice" />
+            <cc:requires
+              rdf:resource="http://creativecommons.org/ns#Attribution"
+            />
+            <cc:permits
+              rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+            />
+            <cc:requires
+              rdf:resource="http://creativecommons.org/ns#ShareAlike"
+            />
+          </cc:License>
+        </rdf:RDF>
+      </metadata>
+      <g
+        inkscape:label="Ebene 1"
+        inkscape:groupmode="layer"
+        id="layer1"
+        transform="translate(0,-270.54167)"
+      >
+        <path
+          style="
+            fill: #ff0000;
+            fill-opacity: 1;
+            stroke: none;
+            stroke-width: 0.99999994;
+          "
+          d="m 31.427734,28.572266 v 45 H 70 v -45 z"
+          transform="matrix(0.26458333,0,0,0.26458333,0,270.54167)"
+          id="rect14"
+          inkscape:connector-curvature="0"
+          inkscape:label="notpress"
+        />
+        <rect
+          style="
+            fill: #000000;
+            fill-opacity: 1;
+            stroke: none;
+            stroke-width: 0.26458332;
+          "
+          id="rect12"
+          width="23.245535"
+          height="4.5357141"
+          x="1.7008928"
+          y="290.00745"
+        />
+        <path
+          id="path20"
+          d="m 8.3152545,283.20409 v 6.80358 H 18.520833 v -6.80358 z"
+          style="
+            fill: #ff0000;
+            fill-opacity: 1;
+            stroke: none;
+            stroke-width: 0.20000619;
+          "
+          inkscape:connector-curvature="0"
+          inkscape:label="pressed"
+        />
+      </g>
+    </svg>
+  </body>
+</html>
