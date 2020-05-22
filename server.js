@@ -13,13 +13,14 @@ cylon
   })
   .device("button", { driver: "button", pin: 7 })
   .device("led", { driver: "led", pin: 13 })
+  .device("switch", { driver: "led", pin: 4 })
   .on("ready", (robot) => {
     app.use((req, res, next) => {
       if (!block) {
         block = true;
-        robot.led.toggle();
+        robot.led.turnOn();
         setTimeout(() => {
-          robot.led.toggle();
+          robot.led.turnOff();
           block = false;
         }, 100);
       }
@@ -29,6 +30,14 @@ cylon
     robot.button.on("push", () => {
       laststate = true;
       io.emit("buttonpress", { pressed: true });
+    });
+    app.get("/api/opto/toggle", (req, res) => {
+      robot.switch.toggle();
+      io.emit("opto", { state: robot.switch.isOn() });
+      res.jsonp({ newstate: robot.switch.isOn(), state: robot.switch.isOn() });
+    });
+    app.get("/api/opto/ison", (req, res) => {
+      res.jsonp({ state: robot.switch.isOn() });
     });
     robot.button.on("release", () => {
       laststate = false;

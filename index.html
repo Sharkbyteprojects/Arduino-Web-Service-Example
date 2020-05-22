@@ -41,6 +41,24 @@
             alert("ERROR, GIVE A NUMBER BETWEEN -90 AND 90");
           }
         });
+        function reacOpto(data) {
+          var text = "Optokoppler";
+          var states = "Optokoppler is Current ";
+          if (data.state) {
+            text += " Off";
+            states += "On";
+          } else {
+            text += " On";
+            states += "Off";
+          }
+          $("button.buttonopto").text(text);
+          $("div.buttonopto").text(states);
+        }
+        $.get("/api/opto/ison", reacOpto, "json");
+        $("button.buttonopto").click(() => {
+          $.get("/api/opto/toggle", reacOpto, "json");
+        });
+        socket.on("opto", reacOpto);
       });
     </script>
   </head>
@@ -48,6 +66,8 @@
     <input type="number" class="servo" />
     <button class="servo">Servo Rotate</button>
     <div class="servo"></div>
+    <button class="buttonopto">Optokoppler</button>
+    <div class="buttonopto"></div>
     <svg
       xmlns:dc="http://purl.org/dc/elements/1.1/"
       xmlns:cc="http://creativecommons.org/ns#"
