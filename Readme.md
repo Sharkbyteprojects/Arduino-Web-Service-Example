@@ -3,7 +3,7 @@
 
 If you fixed a Bug or make this Better, Fork this, then use pull request to add your version to this Project.
 
-[MORE HELP](https://github.com/Sharkbyteprojects/Arduino-Web-Service-Example/wiki)
+[MORE HELP - GETTING STARTETD](https://github.com/Sharkbyteprojects/Arduino-Web-Service-Example/wiki)
 ## First Steps:
 - Build the Parts Together
 - Connect Arduino with Computer
