@@ -12,6 +12,9 @@ const http = require("http").createServer(app);
 if (websettings.https.enabled) {
   const helmet = require("helmet");
   app.use(helmet());
+  app.use((req,res,next)=>{if(req.protocol=="http"||req.protocol=="http://"||req.protocol=="http:"){
+  	res.redirect('https://' + req.headers.host + req.url);
+  }else{next();}});
   const options = {
     key: fs.readFileSync(__dirname + "/key.pem"),
     cert: fs.readFileSync(__dirname + "/cert.pem"),
