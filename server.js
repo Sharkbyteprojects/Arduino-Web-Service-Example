@@ -1,7 +1,8 @@
 const cylon = require("cylon");
 const app = require("express")();
+const fs=require("fs");
 const configfile = JSON.parse(
-  require("fs").readFileSync(__dirname + "/arduino.port.json")
+  fs.readFileSync(__dirname + "/arduino.port.json")
 );
 const port = configfile.port;
 const websettings = configfile.webserver;
