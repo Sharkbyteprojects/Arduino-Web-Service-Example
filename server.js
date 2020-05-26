@@ -16,7 +16,7 @@ if (websettings.https.enabled) {
     key: fs.readFileSync(__dirname + "/key.pem"),
     cert: fs.readFileSync(__dirname + "/cert.pem"),
   };
-  https = require("https").createServer(app);
+  https = require("https").createServer(options,app);
   io = require("socket.io")(https);
 } else {
   io = require("socket.io")(http);
