@@ -1,6 +1,8 @@
 const cylon = require("cylon");
 const app = require("express")();
 const fs=require("fs");
+let io;
+let https;
 const configfile = JSON.parse(
   fs.readFileSync(__dirname + "/arduino.port.json")
 );
@@ -14,10 +16,10 @@ if (websettings.https.enabled) {
     key: fs.readFileSync(__dirname + "/key.pem"),
     cert: fs.readFileSync(__dirname + "/cert.pem"),
   };
-  const https = require("https").createServer(app);
-  const io = require("socket.io")(https);
+  https = require("https").createServer(app);
+  io = require("socket.io")(https);
 } else {
-  const io = require("socket.io")(http);
+  io = require("socket.io")(http);
 }
 console.log("Loaded Port " + port);
 cylon
