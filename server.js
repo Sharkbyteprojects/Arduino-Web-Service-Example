@@ -1,10 +1,10 @@
 const cylon = require("cylon");
 const app = require("express")();
-const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const port = JSON.parse(
+const configfile = JSON.parse(
   require("fs").readFileSync(__dirname + "/arduino.port.json")
-).port;
+);
+const port = configfile.port;
 console.log("Loaded Port " + port);
 cylon
   .robot()
@@ -60,8 +60,20 @@ cylon
       robot.servo.angle(angle);
       res.jsonp({ newAngle: angle });
     });
-    http.listen(8080, () => {
-      console.log("Listen on localhost 8080");
+    const websettings = configfile.webserver;
+    const http = require("http").createServer(app);
+    if (websettings.https.enabled) {
+      const options = {
+        key: fs.readFileSync(__dirname + "/key.pem"),
+        cert: fs.readFileSync(__dirname + "/cert.pem"),
+      };
+      const https = require("https").createServer(app);
+      https.listen(websettings.https.port, () => {
+        console.log("Listen on https://localhost:" + websettings.https.port);
+      });
+    }
+    http.listen(websettings.http.port, () => {
+      console.log("Listen on http://localhost:" + websettings.http.port);
     });
   });
 cylon.start();

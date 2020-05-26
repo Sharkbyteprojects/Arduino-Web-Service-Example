@@ -1,6 +1,7 @@
 # Security Policy
 
 ## Supported Versions
+
 Use Master branch for the Latest version
 
 ## Reporting a Vulnerability
