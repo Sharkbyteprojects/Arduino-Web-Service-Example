@@ -1,6 +1,6 @@
 const cylon = require("cylon");
 const app = require("express")();
-const fs=require("fs");
+const fs = require("fs");
 let io;
 let https;
 const configfile = JSON.parse(
@@ -12,14 +12,22 @@ const http = require("http").createServer(app);
 if (websettings.https.enabled) {
   const helmet = require("helmet");
   app.use(helmet());
-  app.use((req,res,next)=>{if(req.protocol=="http"||req.protocol=="http://"||req.protocol=="http:"){
-  	res.redirect('https://' + req.headers.host + req.url);
-  }else{next();}});
+  app.use((req, res, next) => {
+    if (
+      req.protocol == "http" ||
+      req.protocol == "http://" ||
+      req.protocol == "http:"
+    ) {
+      res.redirect("https://" + req.headers.host + req.url);
+    } else {
+      next();
+    }
+  });
   const options = {
     key: fs.readFileSync(__dirname + "/key.pem"),
     cert: fs.readFileSync(__dirname + "/cert.pem"),
   };
-  https = require("https").createServer(options,app);
+  https = require("https").createServer(options, app);
   io = require("socket.io")(https);
 } else {
   io = require("socket.io")(http);

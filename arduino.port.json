@@ -1,12 +1,12 @@
 {
   "port": "COM4",
   "webserver": {
-    "http": { 
-    	"port": 80 
-	},
-    "https": { 
-    	"port": 443,
-    	"enabled": true 
-	}
+    "http": {
+      "port": 80
+    },
+    "https": {
+      "port": 443,
+      "enabled": true
+    }
   }
 }
