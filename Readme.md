@@ -25,4 +25,5 @@ If you fixed a Bug or make this Better, Fork this, then use pull request to add 
 
 ## ScreenShots
 
-![](https://user-images.githubusercontent.com/40953479/82694819-41091b80-9c64-11ea-9091-42ae81184673.png)
+- Control Page: ![](https://user-images.githubusercontent.com/40953479/82694819-41091b80-9c64-11ea-9091-42ae81184673.png)
+- HTTPS COMPATIBLE: ![](https://user-content.gitter-static.net/44b17536d588009e13f027b0ccbebcd44a440a57/68747470733a2f2f66696c65732e6769747465722e696d2f536861726b6279746570726f6a656374732f41574542536572766963652f543643622f7468756d622f7368746573742e706e67)
