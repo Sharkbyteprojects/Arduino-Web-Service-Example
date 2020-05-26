@@ -16,7 +16,7 @@ If you fixed a Bug or make this Better, Fork this, then use pull request to add 
 - Run `npm start`
 - The Server is Running on [http://localhost:80](http://localhost)
 - You can change the config in the file `arduino.port.json`.
-- In the Features Branche [THIS] is https automatic enabled, put a private key in the repos with the name `key.pem` and a cert with the name `cert.pem`.
+- In the Features Branche [THIS] is https automatic enabled, put a private key in the repos with the name `key.pem` and a cert with the name `cert.pem` before you start it!
 
 ## Breadboard:
 
